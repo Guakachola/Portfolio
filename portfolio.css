@@ -1,3 +1,11 @@
-.heading{
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12pc;
+
+}
+
+h1{
     text-align: center;
+    font-size:xx-large;
+    font-family: cursive;
 }
