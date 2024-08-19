@@ -1,3 +1,12 @@
 body {
     background-color: rgb(31, 28, 48);
 }
+
+.box{
+    padding: 20px;
+    display: inline-block;
+}
+
+.name{
+    display: block;
+}
