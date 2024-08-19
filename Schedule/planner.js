@@ -7,6 +7,6 @@ timeSlots.forEach(slot => {
         if (event) {
             this.innerHTML = event;
         }
-    })
-})
-})
+    });
+});
+});
