@@ -27,7 +27,7 @@ body {
     border-top: 1px solid #ddd;
     border-left: 1px solid #ddd;
 }
-.day, .time-slot{
+.day, .time_slot{
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
     padding: 10px;
@@ -35,6 +35,6 @@ body {
 .day{
     background-color: #f0f0f0;
 }
-.time-slot{
+.time_slot{
     background-color: #fff;
 }
