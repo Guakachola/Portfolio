@@ -1,0 +1,40 @@
+/* planner.css */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.header{
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.schedule {
+    display: grid;
+    grid-template-columns: repeat(7,1);
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+.day, .time-slot{
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding: 10px;
+}
+.day{
+    background-color: #f0f0f0;
+}
+.time-slot{
+    background-color: #fff;
+}
