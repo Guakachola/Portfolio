@@ -1,40 +1,39 @@
 /* planner.css */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-}
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ede8f5;
+    text-align: center;
+   }
 
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.header{
-    background-color: #007bff;
-    color: #fff;
+.header {
+    background-color: #7091e6;
+    color: #adbbda;
     text-align: center;
     padding: 20px 0;
-}
-
+   }
 .schedule {
     display: grid;
-    grid-template-columns: repeat(7,1);
+    grid-template-columns: repeat(7, 1fr);
     border-top: 1px solid #ddd;
     border-left: 1px solid #ddd;
-}
-.day, .time_slot{
+   }
+.day, .time-slot {
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
-    padding: 10px;
-}
-.day{
-    background-color: #f0f0f0;
-}
-.time_slot{
+   }
+.day {
+    background-color: #3d52a0;
+   }
+.time-slot {
     background-color: #fff;
+   }
+.box{
+    padding: 30px;
+    display: inline-block;
+}
+ul{
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
