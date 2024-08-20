@@ -1,0 +1,21 @@
+/* for notes */
+body {
+    background-color: rgb(31, 28, 48);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+div {
+    color: rgb(30, 192, 146);
+}
+
+h1 {
+    color: rgb(185, 10, 216);
+}
+
+h3 {
+    color: rgb(59, 156, 24);
+}
+
+p {
+    color:aqua;
+}
