@@ -1,7 +1,12 @@
 /* for notes */
+@font-face {
+    font-family: Evermono;
+    src: url(/Portfolio/Notes/Everson\ Mono\ Oblique.ttf);
+}
+
 body {
     background-color: rgb(31, 28, 48);
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Evermono';
 }
 
 div {
