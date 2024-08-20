@@ -1,10 +1,14 @@
 body {
-    background-color: rgb(247, 239, 229);
+    background-image: linear-gradient(to bottom right,rgb(31, 28, 48),aqua);
     margin: 0;
     padding: 0;
     height: 100vw;
 }
 
+div, a{
+  color: darkgray;
+  text-align: center;
+}
 .threeD {
     color: darkgray;
     white-space: nowrap;
@@ -66,5 +70,6 @@ h1{
   .link{
     border-style:outset;
     border-color:black;
+    border: 6;
     border-radius: 20%;
   }

@@ -3,8 +3,14 @@
     src: url(Everson\ Mono\ Oblique.ttf);
 }
 
+html {
+    height: 100%;
+}
+
 body {
-    background-color: rgb(31, 28, 48);
+    background-image: linear-gradient( rgb(31, 28, 48),aqua);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family:'Courier New', Courier, monospace;
 }
 
@@ -18,5 +24,24 @@ body {
 }
 
 h1 {
-    color: rgb(185, 10, 216)
+    color: rgb(185, 10, 216);
+    display: block;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
+    border-style: solid;
+    margin-left:auto;
+    margin-right:auto;
+    width: 40%;
+    
+}
+
+div {
+    text-align: center;
+    height: auto;
+}
+
+a {
+    padding-left: 20px;
+
 }

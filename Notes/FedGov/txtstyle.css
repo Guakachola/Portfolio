@@ -1,5 +1,8 @@
+html {
+    height: 100%;
+}
 body {
-    background-color: rgb(31, 28, 48);
+    background-image: linear-gradient(to bottom right, rgb(31, 28, 48),aqua);
 }
 
 .box{
