@@ -1,0 +1,34 @@
+#organelleModel{
+    display: inline-block;
+    width: 400px;
+    vertical-align: top;
+    margin: 40px;
+    border: 1px solid darkgreen;
+}
+#organelleText{
+    display: inline-block;
+    padding: 30px;
+    width: 500px;
+    height: auto;
+    border: 1px solid darkgreen;
+    left: 300;
+    margin: 40px;
+}
+body{
+    background-color: #faebd7;
+}
+#organelleSelect{
+    position: absolute;
+    margin: 40px;
+    
+}
+h1{
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    color: cadetblue;
+}
+#cell{
+    display: inline-block;
+    margin: 40px;
+    border: 1px solid darkgreen;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+    <script src="myScript.js"></script>
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    -->
+    <title>Cell, Cell, Organelles</title>
+    
+    <style>
+        model-viewer{
+            width: 400px;
+            height: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cell, Cell, Organelles</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+
+    <select id="organelleSelect" onchange="showOrganelle(), showText()">
+        <option value="Nucleolus">Nucleolus</option>
+        <option value="Chromatin">Chromatin</option>
+        <option value="Nuclear Membrane">Nuclear Membrane</option>
+        <option value="RER">Rough Endoplasmic Reticulum</option>
+        <option value="SER">Smooth Endoplasmic Reticulum</option>
+        <option value="Ribosome">Ribosome</option>
+        <option value="Lysosome">Lysosome</option>
+        <option value="Golgi Apparatus">Golgi Apparatus</option>
+        <option value="Vacuole">Vacuole</option>
+        <option value="Centrioles">Centrioles</option>
+        <option value="Mitochondrion">Mitochondrion</option>
+        <option value="Cytoplasm">Cytoplasm</option>
+        <option value="Cell Membrane">Cell Membrane</option>
+
+    </select>
+    <div id="organelleText">
+
+    
+    </div>
+    
+    <div id="organelleModel">
+
+    </div>
+
+    <model-viewer src="assets/Swanky Albar.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="1" id="cell"> </model-viewer>
+
+</body>
+</html>
