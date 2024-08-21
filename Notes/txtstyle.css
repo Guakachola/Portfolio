@@ -8,7 +8,7 @@ html {
 }
 
 body {
-    background-image: linear-gradient( rgb(31, 28, 48),aqua);
+    background-image: linear-gradient(to bottom right, rgb(31, 28, 48),rgba(2, 132, 238, 0.774));
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family:'Courier New', Courier, monospace;
