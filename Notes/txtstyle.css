@@ -30,6 +30,7 @@ h1 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: oblique;
     border-style: solid;
+    border-width: auto;
     margin-left:auto;
     margin-right:auto;
     width: 40%;
