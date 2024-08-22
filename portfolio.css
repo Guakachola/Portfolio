@@ -11,7 +11,9 @@ body {
     height: 100vw;
     background-repeat: no-repeat;
 }
-
+div {
+  padding: 20px;
+}
 div, a{
   color: darkgray;
   text-align: center;
@@ -41,7 +43,7 @@ div, a{
 
 h1{
     text-align: center;
-
+    
 }
 
 .bgimg {
