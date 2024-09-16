@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Notes]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib/media/favicon.png</url><title>Notes</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Mon, 16 Sep 2024 16:30:03 GMT</lastBuildDate><atom:link href="lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Mon, 16 Sep 2024 16:30:00 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[Unit 2]]></title><description><![CDATA[ 
+ <br><br>Remember to use VSCode, it has good syntax correction and is very user friendly. It can autofill with suggest functions for the user to input. It can tell you when you have mispelt words and functions.
+Copy<br><br>Comments are made by using three quotes: """ """;
+They are also made by single quotes: ''' ''';
+They exist so that other programmers and yourself can keep up with the brainflow and thoughts of the one that programmed the code originally. They maintain intention behind the code.
+
+from os input system 
+system("cls")
+This clears the terminal from clutter before code is written. It helps with readability and simplcitiy, but does not effect code produced.
+
+Input and output are defined by the user interaction with the console. Processes such as 'printf' let the user modify the print function to include additions and formating. This allows for multiple different ways to include variables in the print(f"...").
+Copy]]></description><link>cosc/sm1/unit1/2.html</link><guid isPermaLink="false">CoSc/Sm1/unit1/2.md</guid><pubDate>Tue, 27 Aug 2024 18:54:36 GMT</pubDate></item><item><title><![CDATA[Unit 4]]></title><description><![CDATA[ 
+ <br><br>print(1 + 1) will print a Integer, not a String. Interseting to note. the function len() will store a value, as an integer, of the length of a String, nothing else.
+Anytime division is used, it will always include a decimal point, even if there is no remainder.
+
+Using // as an operator gives the quotient, without the remainder. % gives the remainder, without the quotient.
+Copy]]></description><link>cosc/sm1/unit1/4.html</link><guid isPermaLink="false">CoSc/Sm1/unit1/4.md</guid><pubDate>Tue, 03 Sep 2024 18:35:06 GMT</pubDate></item><item><title><![CDATA[4.1]]></title><description><![CDATA[ 
+ <br><br>Turtle is used to create a simple graphical window for drawing lines. It uses objects to draw lines, guided by directions coded by the user.
+Remember, use ''_.exitonclick()''
+The Turtle starts facing east.
+Copy]]></description><link>cosc/sm1/unit1/4.1.html</link><guid isPermaLink="false">CoSc/Sm1/unit1/4.1.md</guid><pubDate>Thu, 12 Sep 2024 19:00:53 GMT</pubDate></item></channel></rss>

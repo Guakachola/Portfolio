@@ -1,0 +1,1 @@
+let graphData={graphOptions:{attractionForce:1,linkLength:10,repulsionForce:150,centralForce:3,edgePruning:100,minNodeRadius:3,maxNodeRadius:7},isInitialized:!0,paths:["cosc/sm1/unit1/2.html","cosc/sm1/unit1/4.html","cosc/sm1/unit1/4.1.html"],nodeCount:3,linkSources:[],linkTargets:[],labels:["2","4","4.1"],radii:[null,null,null],linkCount:0}
