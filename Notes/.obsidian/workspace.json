@@ -4,50 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "e693a821e79374b6",
+        "id": "1261b64a761fce85",
         "type": "tabs",
         "children": [
           {
-            "id": "3fa3ef6a940c06b4",
+            "id": "87cc426c498ca060",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "FedGov/Sm1/2.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ca73e835f93b31c4",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "CoSc/Sm1/unit1/Untitled.canvas",
-                "viewState": {
-                  "x": 561.6988324291988,
-                  "y": 25.632296547829753,
-                  "zoom": -0.42324634449225507
-                }
-              }
-            }
-          },
-          {
-            "id": "7cea618d29fc5aad",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "CoSc/Sm1/unit1/2.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -66,8 +36,11 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -82,7 +55,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -90,14 +65,17 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "438ac541c3c24228",
@@ -113,7 +91,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CoSc/Sm1/unit1/4.1.md",
+                "file": "FedGov/Sm1/Exam3/Lecture 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +99,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Lecture 1"
             }
           },
           {
@@ -130,10 +110,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "CoSc/Sm1/unit1/4.1.md",
+                "file": "FedGov/Sm1/Exam3/Lecture 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Lecture 1"
             }
           },
           {
@@ -144,7 +126,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -153,8 +137,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CoSc/Sm1/unit1/4.1.md"
-              }
+                "file": "FedGov/Sm1/Exam3/Lecture 1.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Lecture 1"
             }
           }
         ]
@@ -175,51 +161,27 @@
       "webpage-html-export:Export Vault to HTML": false
     }
   },
-  "floating": {
-    "id": "e88da916b36a6992",
-    "type": "floating",
-    "children": [
-      {
-        "id": "b9a737858fb5e571",
-        "type": "window",
-        "children": [
-          {
-            "id": "9e5c6a055cd6efcb",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "dd9e55b164532a56",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "CoSc/Sm1/unit1/4.1.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": 317,
-        "y": 338,
-        "width": 902,
-        "height": 502,
-        "maximize": false,
-        "zoom": 0
-      }
-    ]
-  },
-  "active": "dd9e55b164532a56",
+  "active": "87cc426c498ca060",
   "lastOpenFiles": [
+    "file_icon.png",
+    "Rel/First Lecture.md",
     "CoSc/Sm1/unit1/2.md",
-    "CoSc/Sm1/unit1/Untitled.canvas",
-    "CoSc/Sm1/unit1/4.1.md",
-    "CoSc/Sm1/unit1/compile.png",
+    "CoSc/Sm1/unit1/FINAL EXAM REVIEW.md",
+    "CoSc/Sm1/unit1/interpret.png",
+    "Runescape.md",
+    "FedGov/Sm1/Exam3/Lecture 1.md",
+    "CoSc/Sm1/unit1/Exam 2 Review.md",
+    "FedGov/Sm1/Exam3",
+    "CoSc/Sm1/unit1/Exam 1 Review.md",
+    "CoSc/Sm1/unit1/binary.png",
+    "CoSc/syllabus.pdf",
     "CoSc/Resumes.md",
+    "CoSc/Sm1/unit1/compile.png",
+    "CoSc/Sm1/unit1/4.1.md",
+    "CoSc/Sm1/unit1/4.md",
+    "FedGov/Sm1/Presidency.md",
     "FedGov/Sm1/2.md",
-    "CoSc/Sm1/unit1/4.md"
+    "Pasted image 20240919121054.png",
+    "CoSc/Sm1/unit1/Untitled.canvas"
   ]
 }
