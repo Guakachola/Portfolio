@@ -1,15 +1,20 @@
 html {
-  min-height: auto;
-  max-width: auto;
+  min-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   background-size: cover;
 }
 
 body {
-    background-image: linear-gradient(to bottom right, rgb(31, 28, 48),rgba(2, 132, 238, 0.774));
-    margin: 0;
-    padding: 0;
-    height: 100vw;
-    background-repeat: no-repeat;
+  background-image: linear-gradient(to bottom right, rgb(31, 28, 48),rgba(2, 132, 238, 0.774));
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 div {
   padding: 20px;
@@ -18,13 +23,27 @@ div, a{
   color: darkgray;
   text-align: center;
 }
+.project{
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border: 3px solid #fff;
+  border-radius: 8px;
+  background-color: rgba(31, 28, 48, 0.6);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin: 10px;
+
+}
 .threeD {
     color: darkgray;
     white-space: nowrap;
-    /* position: absolute;
-    top: 50%;
-    left: 50%; */
-    
+    position: relative;
+    left: 10%;
     transform: translate(-50%, -50%);
     font-size: 3em;
     font-family: cursive;
@@ -51,10 +70,7 @@ div, a{
   margin-top: 20px;
   margin-bottom: 20px;
   font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+
 }
 
 .subtitle{
@@ -91,22 +107,54 @@ div, a{
   transform: translateX(5px);
 }
 
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  z-index: 5;
+}
+
 .profile-section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex: 1;
+  padding: 20px;
 }
 
-.profile-img{
+.profile-img {
   width: 200px;
   height: 200px;
-  position: relative;
-  left: 30px; 
   border-radius: 50%;
   object-fit: cover;
-  margin: 20px 20px 20px 0;
+  margin-bottom: 20px;
   border: 5px solid #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.uh {
+  width: 400px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.card {
+  background: rgba(31, 28, 48, 0.6);
+  backdrop-filter: blur(10px);
+  width: auto;
+  height: auto;
+  border: 5px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 /*.arch-img{
@@ -119,52 +167,79 @@ div, a{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin-top: 20px;
 }
+
 /* flip arch image */
 .flip-arch {
+  display: flex;
   background-color: transparent;
-  perspective: 1000px;
-  width: 800px;
-  height: 300px;
+  width: 70%;
+  max-width: 800px;
+  height: auto;
+  aspect-ratio: 16/9;
   margin: 0 auto;
   position: relative;
+  right: 20px;
+  bottom: 30px;
+  cursor: pointer;
+  z-index: 20;
+  pointer-events: all;
 }
+
 .flip-arch-inner {
   position: absolute;
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transform-origin: center;
-  transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: all;
 }
-.flip-arch-inner.spinning {
-  transform: rotateY(720deg);
-  transition: transform 0.5s cubic-bezier(0.4, 0, 1, 1);
+
+.flip-arch-inner.flipped {
+  transform: rotateY(180deg);
 }
+
 .flip-arch-front, .flip-arch-back {
   position: absolute;
   width: 100%;
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
 }
+
 .flip-arch-front img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  max-width: 100%;
 }
+
 .flip-arch-front {
   background-color: transparent;
 }
+
 .flip-arch-back {
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 20px;
 }
 
+/* Media queries for responsive adjustments */
+@media (max-width: 1200px) {
+  .flip-arch {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .flip-arch {
+    max-width: 100%;
+  }
+}
 
 .bgimg {
     background-position: center;
@@ -186,7 +261,7 @@ div, a{
   }
 
   .hide{
-    display:none!important
+    display:none !important
   }
 
   .font{
@@ -258,12 +333,105 @@ div, a{
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
   }
 
-.container {
-  text-align: left;
-  padding-left: 50px;
+/* card shuffler */
+
+.card-container {
   display: flex;
-  align-items: flex-start;
-  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* min-height: 100vh; */
+  padding: 40px 20px;
+  position: relative;
 }
-  
-/* flip arch image */
+
+.cards-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+}
+
+.swiper-container {
+  width: 100%;
+  padding: 40px 0;
+  margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.swiper-wrapper {
+  display: flex;
+  align-items: center;
+  width: auto;
+  pointer-events: none;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  width: 80% !important;
+  max-width: 1000px;
+  pointer-events: all;
+}
+
+/* Style Swiper navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  backdrop-filter: blur(5px);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* Style Swiper pagination */
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid #fff;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #fff;
+  transform: scale(1.3);
+}
+
+/* Add scale effect to non-active slides */
+.swiper-slide-prev,
+.swiper-slide-next {
+  transform: scale(0.8);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.swiper-slide-active {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: all !important;
+}
+
+/* Override Swiper grab cursor when hovering over flip-arch */
+.swiper-wrapper .flip-arch {
+  pointer-events: all !important;
+}
+
+.swiper-slide-active .flip-arch {
+  pointer-events: all !important;
+}
