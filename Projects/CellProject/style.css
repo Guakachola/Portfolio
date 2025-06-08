@@ -1,6 +1,7 @@
 #organelleModel{
     display: inline-block;
     width: 400px;
+    height: 400px;
     vertical-align: top;
     margin: 40px;
     border: 1px solid darkgreen;
@@ -8,7 +9,7 @@
 #organelleText{
     display: inline-block;
     padding: 30px;
-    width: 500px;
+    width: 400px;
     height: auto;
     border: 1px solid darkgreen;
     left: 300;
@@ -31,4 +32,11 @@ h1{
     display: inline-block;
     margin: 40px;
     border: 1px solid darkgreen;
+    width: 400px;
+    height: 400px;
+}
+.container{
+    position: relative;
+    left: 35%;
+    bottom: 145px;
 }

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const swiper = new Swiper('.swiper-container', {
         // Enable smooth sliding effect
         effect: 'coverflow',
-        grabCursor: false,
+        grabCursor: true,
         centeredSlides: true,
         slidesPerView: 'auto',
         initialSlide: 0,
@@ -36,8 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Flip arch functionality
     const flipArch = document.querySelector('.flip-arch');
     if (flipArch) {
-        flipArch.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent event from bubbling to Swiper
+        flipArch.addEventListener('click', function() {
             const inner = this.querySelector('.flip-arch-inner');
             inner.classList.toggle('flipped');
         });
