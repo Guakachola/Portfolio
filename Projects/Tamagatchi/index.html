@@ -2,34 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Tamagatchi</title>
+  <title>Tamagatchi Terminal</title>
   <style>
-    body { background: #111; color: #0f0; font-family: monospace; padding: 1rem; }
-    pre { background: #000; padding: 1rem; border: 1px solid #0f0; max-height: 80vh; overflow-y: auto; }
+    body {
+      background-color: #111;
+      color: #0f0;
+      font-family: monospace;
+      padding: 20px;
+    }
+    #terminal {
+      background: #000;
+      border: 1px solid #0f0;
+      padding: 1em;
+      height: 400px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+    #command {
+      background: #111;
+      color: #0f0;
+      border: none;
+      border-top: 1px solid #0f0;
+      padding: 10px;
+      width: 100%;
+      font-family: monospace;
+      font-size: 1em;
+    }
   </style>
 </head>
 <body>
-  <h1>Tamagatchi Terminal</h1>
-  <pre id="output"></pre>
 
-  <script>
-    var outputElement = document.getElementById('output');
+<h1>Tamagatchi Terminal</h1>
+<div id="terminal"></div>
+<input id="command" autocomplete="off" placeholder="Type input and hit Enter..." />
 
-    function printToScreen(text) {
-      outputElement.textContent += text + '\n';
-    }
+<script>
+  const terminal = document.getElementById('terminal');
+  const inputField = document.getElementById('command');
+  let inputBuffer = [];
 
-    var Module = {
-      print: printToScreen,
-      printErr: printToScreen,
+  function appendToTerminal(text) {
+    terminal.textContent += text + "\n";
+    terminal.scrollTop = terminal.scrollHeight;
+  }
 
-      // Optional: replace prompt with browser prompt for stdin
-      stdin: function() {
-        return prompt("Input:").charCodeAt(0); // basic single-char input
+  inputField.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      const userInput = inputField.value + '\n';
+      appendToTerminal("> " + inputField.value);
+      for (let i = 0; i < userInput.length; i++) {
+        inputBuffer.push(userInput.charCodeAt(i));
       }
-    };
-  </script>
+      inputField.value = '';
+    }
+  });
 
-  <script src="Tamagatchi.js"></script>
+  const Module = {
+    print: appendToTerminal,
+    printErr: appendToTerminal,
+    stdin: function () {
+      return inputBuffer.length > 0 ? inputBuffer.shift() : null;
+    }
+  };
+</script>
+
+<script src="Tamagatchi.js"></script>
 </body>
 </html>
