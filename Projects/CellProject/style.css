@@ -7,7 +7,7 @@
     border: 1px solid darkgreen;
 }
 #organelleText{
-    display: inline-block;
+    display: block;
     padding: 30px;
     width: 400px;
     height: auto;
@@ -20,7 +20,8 @@ body{
 }
 #organelleSelect{
     position: absolute;
-    margin: 40px;
+    margin-left: 40px;
+    margin-top: 20px;
     
 }
 h1{
@@ -36,7 +37,11 @@ h1{
     height: 400px;
 }
 .container{
-    position: relative;
-    left: 35%;
-    bottom: 145px;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.models{
+    width: 970px;
+    height: auto;
 }
