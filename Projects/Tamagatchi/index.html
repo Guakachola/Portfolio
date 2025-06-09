@@ -1,73 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Tamagotchi Terminal</title>
-  <link rel="stylesheet" href="xterm/xterm.css" />
+  <meta charset="utf-8" />
+  <title>Tamagatchi Debug</title>
   <script src="xterm/xterm.js"></script>
-  <style>
-    body {
-      margin: 0;
-      background-color: #000;
-      color: #0f0;
-      font-family: monospace;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    #terminal-container {
-      flex: 1;
-    }
-  </style>
+  <link rel="stylesheet" href="xterm/xterm.css" />
 </head>
 <body>
+  <h1>Tamagatchi Debug Terminal</h1>
   <div id="terminal-container"></div>
-
   <script>
     const term = new Terminal({
       cursorBlink: true,
-      fontSize: 14,
-      fontFamily: 'monospace',
-      theme: { background: '#000', foreground: '#0f0', cursor: '#0f0' }
+      theme: { background: '#000', foreground: '#0f0' },
+      rows: 24,
+      cols: 80,
     });
-
     term.open(document.getElementById('terminal-container'));
-    term.writeln("Booting Tamagotchi...");
 
-    // Input buffer
-    let inputBuffer = [];
-
-    // Hook terminal input
+    const inputBuffer = [];
     term.onData(data => {
-      for (let i = 0; i < data.length; i++) {
-        const char = data[i];
-        inputBuffer.push(char.charCodeAt(0));
-        term.write(char);
-        if (char === '\r') {
-          term.write('\n');
-          inputBuffer.push('\n'.charCodeAt(0));
-        }
+      for (let ch of data) inputBuffer.push(ch.charCodeAt(0));
+      if (data === '\r') {
+        inputBuffer.push(10);
+        term.write('\r\n');
+      } else {
+        term.write(data);
+      }
+      // Notify WASM runtime that new input is available:
+      if (Module._emscripten_notify_input) {
+        Module._emscripten_notify_input();
       }
     });
 
-    // Define Module
+
     var Module = {
-      preRun: [],
-      postRun: [],
-      print: function(text) {
-        term.writeln(text);
+      print: text => term.writeln(text),
+      printErr: err => term.writeln('\x1b[31m' + err + '\x1b[0m'),
+      stdin: () => inputBuffer.length ? inputBuffer.shift() : -1,
+      onRuntimeInitialized: () => {
+        term.writeln('🚀 WASM Runtime initialized');
       },
-      printErr: function(text) {
-        term.writeln('\x1b[31m' + text + '\x1b[0m');
-      },
-      stdin: function() {
-        return inputBuffer.length > 0 ? inputBuffer.shift() : null;
-      }
+      onAbort: msg => term.writeln('\x1b[31mABORT: ' + msg + '\x1b[0m'),
+      setStatus: status => term.writeln('STATUS: ' + status),
+      monitorRunDependencies: left => term.writeln(`Dependencies left: ${left}`),
     };
 
-    // Load the Emscripten-generated JS file
-    var script = document.createElement('script');
-    script.src = "Tamagatchi.js";  // Must match your `-o Tamagatchi.js` output name
+    term.writeln('Loading WASM...');
+
+    const script = document.createElement('script');
+    script.src = 'Tamagatchi.js';
+    script.onload = () => term.writeln('✅ Tamagatchi.js loaded');
+    script.onerror = () => term.writeln('\x1b[31mFailed to load Tamagatchi.js\x1b[0m');
     document.body.appendChild(script);
   </script>
 </body>
