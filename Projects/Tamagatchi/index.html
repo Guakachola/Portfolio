@@ -7,7 +7,6 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/xterm/5.5.0/xterm.min.css"
   />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/5.5.0/xterm.min.js"></script>
   <style>
     body {
       background-color: #111;
@@ -37,76 +36,88 @@
   <h1>Tamagatchi Terminal</h1>
   <div id="terminal-container"></div>
 
+  <!-- Load scripts in the correct order -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/5.5.0/xterm.min.js"></script>
   <script>
-    // Initialize xterm.js
-    const term = new Terminal({
-      cursorBlink: true,
-      fontSize: 14,
-      fontFamily: 'monospace',
-      theme: {
-        background: '#000',
-        foreground: '#0f0',
-        cursor: '#0f0'
-      },
-      rows: 24,
-      cols: 80
-    });
-
-    // Open terminal in container
-    term.open(document.getElementById('terminal-container'));
-    term.focus(); // Add focus to ensure input works
-
-    // Input buffer for WebAssembly
-    let inputBuffer = [];
-    let inputCallback = null;
-
-    // Handle terminal input
-    term.onData(data => {
-      for (const char of data) {
-        inputBuffer.push(char.charCodeAt(0));
+    // Wait for document and scripts to load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Make sure xterm.js is loaded
+      if (typeof Terminal === 'undefined') {
+        console.error('xterm.js failed to load');
+        return;
       }
-      term.write(data);
-      
-      // If it's an enter key, add newline
-      if (data === '\r') {
-        term.write('\n');
-        inputBuffer.push('\n'.charCodeAt(0));
-      }
-      
-      // If there's a pending input callback, resolve it
-      if (inputCallback) {
-        const cb = inputCallback;
-        inputCallback = null;
-        cb();
-      }
-    });
 
-    // Configure Module for Emscripten
-    const Module = {
-      print: function(text) {
-        term.writeln(text);
-      },
-      printErr: function(text) {
-        term.writeln('\x1b[31m' + text + '\x1b[0m');  // Red color for errors
-      },
-      stdin: function() {
-        if (inputBuffer.length > 0) {
-          return inputBuffer.shift();
+      // Initialize xterm.js
+      const term = new Terminal({
+        cursorBlink: true,
+        fontSize: 14,
+        fontFamily: 'monospace',
+        theme: {
+          background: '#000',
+          foreground: '#0f0',
+          cursor: '#0f0'
+        },
+        rows: 24,
+        cols: 80
+      });
+
+      // Open terminal in container
+      term.open(document.getElementById('terminal-container'));
+      term.focus(); // Add focus to ensure input works
+
+      // Input buffer for WebAssembly
+      let inputBuffer = [];
+      let inputCallback = null;
+
+      // Handle terminal input
+      term.onData(data => {
+        for (const char of data) {
+          inputBuffer.push(char.charCodeAt(0));
         }
-        return null;
-      },
-      // This ensures we wait for input when needed
-      stdin_ready: function() {
-        return inputBuffer.length > 0;
-      }
-    };
+        term.write(data);
+        
+        // If it's an enter key, add newline
+        if (data === '\r') {
+          term.write('\n');
+          inputBuffer.push('\n'.charCodeAt(0));
+        }
+        
+        // If there's a pending input callback, resolve it
+        if (inputCallback) {
+          const cb = inputCallback;
+          inputCallback = null;
+          cb();
+        }
+      });
 
-    // Welcome message
-    term.writeln('Welcome to Tamagatchi Terminal!');
-    term.writeln('Loading WebAssembly module...');
-    term.writeln('Type your commands after the program loads...\n');
+      // Configure Module for Emscripten
+      const Module = {
+        print: function(text) {
+          term.writeln(text);
+        },
+        printErr: function(text) {
+          term.writeln('\x1b[31m' + text + '\x1b[0m');  // Red color for errors
+        },
+        stdin: function() {
+          if (inputBuffer.length > 0) {
+            return inputBuffer.shift();
+          }
+          return null;
+        },
+        // This ensures we wait for input when needed
+        stdin_ready: function() {
+          return inputBuffer.length > 0;
+        }
+      };
+
+      // Welcome message
+      term.writeln('Welcome to Tamagatchi Terminal!');
+      term.writeln('Loading WebAssembly module...');
+      term.writeln('Type your commands after the program loads...\n');
+    });
   </script>
 
+  <!-- Load Tamagotchi after terminal initialization -->
   <script src="Tamagatchi.js"></script>
 </body>
 </html>
