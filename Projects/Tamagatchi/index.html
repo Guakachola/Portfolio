@@ -1,71 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Tamagatchi Terminal</title>
+  <title>Tamagotchi Terminal</title>
   <style>
-    body {
-      background-color: #111;
-      color: #0f0;
-      font-family: monospace;
-      padding: 20px;
-    }
-    #terminal {
-      background: #000;
-      border: 1px solid #0f0;
-      padding: 1em;
-      height: 400px;
-      overflow-y: auto;
-      white-space: pre-wrap;
-    }
-    #command {
-      background: #111;
-      color: #0f0;
-      border: none;
-      border-top: 1px solid #0f0;
-      padding: 10px;
-      width: 100%;
-      font-family: monospace;
-      font-size: 1em;
-    }
+    /* Your existing styles */
   </style>
 </head>
 <body>
+  <h1>Tamagotchi Terminal</h1>
+  <div id="terminal"></div>
+  <input id="command" autocomplete="off" placeholder="Type input and hit Enter..." />
+  
+  <script src="Tamagatchi.js"></script>
+  <script>
+    const terminal = document.getElementById('terminal');
+    const inputField = document.getElementById('command');
+    let inputBuffer = [];
 
-<h1>Tamagatchi Terminal</h1>
-<div id="terminal"></div>
-<input id="command" autocomplete="off" placeholder="Type input and hit Enter..." />
+    function appendToTerminal(text) {
+      terminal.textContent += text + "\n";
+      terminal.scrollTop = terminal.scrollHeight;
+    }
 
-<script>
-  const terminal = document.getElementById('terminal');
-  const inputField = document.getElementById('command');
-  let inputBuffer = [];
-
-  function appendToTerminal(text) {
-    terminal.textContent += text + "\n";
-    terminal.scrollTop = terminal.scrollHeight;
-  }
-
-  inputField.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-      const userInput = inputField.value + '\n';
-      appendToTerminal("> " + inputField.value);
-      for (let i = 0; i < userInput.length; i++) {
-        inputBuffer.push(userInput.charCodeAt(i));
+    // Override Module's print functions to use our terminal
+    Module = {
+      print: appendToTerminal,
+      printErr: appendToTerminal,
+      stdin: function() {
+        if (inputBuffer.length > 0) {
+          return inputBuffer.shift();
+        }
+        return null;
+      },
+      onRuntimeInitialized: function() {
+        // Program is ready
+        appendToTerminal("Tamagotchi terminal ready!");
       }
-      inputField.value = '';
-    }
-  });
+    };
 
-  const Module = {
-    print: appendToTerminal,
-    printErr: appendToTerminal,
-    stdin: function () {
-      return inputBuffer.length > 0 ? inputBuffer.shift() : null;
-    }
-  };
-</script>
-
-<script src="Tamagatchi.js"></script>
+    inputField.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        const userInput = inputField.value;
+        appendToTerminal("> " + userInput);
+        
+        // Convert input to ASCII codes and push to buffer
+        for (let i = 0; i < userInput.length; i++) {
+          inputBuffer.push(userInput.charCodeAt(i));
+        }
+        inputBuffer.push(10); // Newline character
+        
+        inputField.value = '';
+      }
+    });
+  </script>
 </body>
 </html>
