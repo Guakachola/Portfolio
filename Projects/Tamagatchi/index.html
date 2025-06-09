@@ -118,13 +118,16 @@
         if (inputBuffer.length > 0) {
           return inputBuffer.shift();
         }
-        return null;
+        // No input ready, just wait a bit by returning -1 or null
+        return -1; // best practice
       };
 
+
+
       // Welcome message
-      term.writeln('Welcome to Tamagatchi Terminal!');
-      term.writeln('Loading WebAssembly module...');
-      term.writeln('Type your commands after the program loads...\n');
+      // term.writeln('Welcome to Tamagatchi Terminal!');
+      // term.writeln('Loading WebAssembly module...');
+      // term.writeln('Type your commands after the program loads...\n');
 
       // Now load the Tamagotchi code
       var script = document.createElement('script');
@@ -134,7 +137,7 @@
         if (typeof Tamagatchi === 'function') {
           inputBuffer = [];
           Tamagatchi(Module).then(instance => {
-            term.writeln('Game loaded and running!');
+            //term.writeln('Game loaded and running!');
           });
         } else {
           term.writeln('Tamagatchi not found.');
