@@ -1,58 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Tamagatchi Debug</title>
-  <script src="xterm/xterm.js"></script>
-  <link rel="stylesheet" href="xterm/xterm.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Tamagotchi</title>
+
+    <link rel="stylesheet" href="xterm/xterm.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Tamagatchi Debug Terminal</h1>
-  <div id="terminal-container"></div>
-  <script>
-    const term = new Terminal({
-      cursorBlink: true,
-      theme: { background: '#000', foreground: '#0f0' },
-      rows: 24,
-      cols: 80,
-    });
-    term.open(document.getElementById('terminal-container'));
+    <h1 class="title"> Tamagotchi Project from 1437. </h1>
 
-    const inputBuffer = [];
-    term.onData(data => {
-      for (let ch of data) inputBuffer.push(ch.charCodeAt(0));
-      if (data === '\r') {
-        inputBuffer.push(10);
-        term.write('\r\n');
-      } else {
-        term.write(data);
-      }
-      // Notify WASM runtime that new input is available:
-      if (Module._emscripten_notify_input) {
-        Module._emscripten_notify_input();
-      }
-    });
+    <div class="center-container">
+        <div class="github">
+            <a href="https://github.com/Guakachola/CS1437-Final" target="_blank">
+                <img src="https://github-readme-stats.vercel.app/api/pin/?username=Guakachola&repo=CS1437-Final&theme=dark" />
+              </a>             
+        </div>
+    </div>
 
+    <hr />
 
-    var Module = {
-      print: text => term.writeln(text),
-      printErr: err => term.writeln('\x1b[31m' + err + '\x1b[0m'),
-      stdin: () => inputBuffer.length ? inputBuffer.shift() : -1,
-      onRuntimeInitialized: () => {
-        term.writeln('🚀 WASM Runtime initialized');
-      },
-      onAbort: msg => term.writeln('\x1b[31mABORT: ' + msg + '\x1b[0m'),
-      setStatus: status => term.writeln('STATUS: ' + status),
-      monitorRunDependencies: left => term.writeln(`Dependencies left: ${left}`),
-    };
+    <h3 class="jstitle"> ___ WIP ___ </h3>
 
-    term.writeln('Loading WASM...');
+    <div id="xterm-container">
+        <script src="xterm/xterm.js"></script>
+        <script>
 
-    const script = document.createElement('script');
-    script.src = 'Tamagatchi.js';
-    script.onload = () => term.writeln('✅ Tamagatchi.js loaded');
-    script.onerror = () => term.writeln('\x1b[31mFailed to load Tamagatchi.js\x1b[0m');
-    document.body.appendChild(script);
-  </script>
+            const term = new Terminal();
+
+            term.open(document.getElementById("xterm-container"));
+            term.writeln("Hello world!");
+            term.focus();
+        </script>
+    </div>
 </body>
 </html>
