@@ -129,6 +129,17 @@
       // Now load the Tamagotchi code
       var script = document.createElement('script');
       script.src = 'Tamagatchi.js';
+      // After adding the script element
+      script.onload = () => {
+        if (typeof Tamagatchi === 'function') {
+          Tamagatchi(Module).then(instance => {
+            term.writeln('Game loaded and running!');
+          });
+        } else {
+          term.writeln('Tamagatchi not found.');
+        }
+      };
+
       document.body.appendChild(script);
     });
   </script>
