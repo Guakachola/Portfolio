@@ -105,13 +105,13 @@
           inputBuffer.push(char.charCodeAt(0));
         }
         term.write(data);
-        
-        // If it's an enter key, add newline
+
         if (data === '\r') {
           term.write('\n');
           inputBuffer.push('\n'.charCodeAt(0));
         }
       });
+
 
       // Add stdin handling to Module
       Module.stdin = function() {
@@ -132,6 +132,7 @@
       // After adding the script element
       script.onload = () => {
         if (typeof Tamagatchi === 'function') {
+          inputBuffer = [];
           Tamagatchi(Module).then(instance => {
             term.writeln('Game loaded and running!');
           });
