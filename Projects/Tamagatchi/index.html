@@ -47,11 +47,14 @@
         background: '#000',
         foreground: '#0f0',
         cursor: '#0f0'
-      }
+      },
+      rows: 24,
+      cols: 80
     });
 
     // Open terminal in container
     term.open(document.getElementById('terminal-container'));
+    term.focus(); // Add focus to ensure input works
 
     // Input buffer for WebAssembly
     let inputBuffer = [];
