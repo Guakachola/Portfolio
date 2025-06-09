@@ -3,69 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <title>Tamagatchi Terminal</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/xterm/5.5.0/xterm.min.css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/5.5.0/xterm.min.js"></script>
   <style>
     body {
       background-color: #111;
       color: #0f0;
       font-family: monospace;
       padding: 20px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
     }
-    #terminal {
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    #terminal-container {
+      flex: 1;
       background: #000;
       border: 1px solid #0f0;
-      padding: 1em;
-      height: 400px;
-      overflow-y: auto;
-      white-space: pre-wrap;
-    }
-    #command {
-      background: #111;
-      color: #0f0;
-      border: none;
-      border-top: 1px solid #0f0;
       padding: 10px;
-      width: 100%;
-      font-family: monospace;
-      font-size: 1em;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
     }
   </style>
 </head>
 <body>
+  <h1>Tamagatchi Terminal</h1>
+  <div id="terminal-container"></div>
 
-<h1>Tamagatchi Terminal</h1>
-<div id="terminal"></div>
-<input id="command" autocomplete="off" placeholder="Type input and hit Enter..." />
-
-<script>
-  const terminal = document.getElementById('terminal');
-  const inputField = document.getElementById('command');
-  let inputBuffer = [];
-
-  function appendToTerminal(text) {
-    terminal.textContent += text + "\n";
-    terminal.scrollTop = terminal.scrollHeight;
-  }
-
-  inputField.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-      const userInput = inputField.value + '\n';
-      appendToTerminal("> " + inputField.value);
-      for (let i = 0; i < userInput.length; i++) {
-        inputBuffer.push(userInput.charCodeAt(i));
+  <script>
+    // Initialize xterm.js
+    const term = new Terminal({
+      cursorBlink: true,
+      fontSize: 14,
+      fontFamily: 'monospace',
+      theme: {
+        background: '#000',
+        foreground: '#0f0',
+        cursor: '#0f0'
       }
-      inputField.value = '';
-    }
-  });
+    });
 
-  const Module = {
-    print: appendToTerminal,
-    printErr: appendToTerminal,
-    stdin: function () {
-      return inputBuffer.length > 0 ? inputBuffer.shift() : null;
-    }
-  };
-</script>
+    // Open terminal in container
+    term.open(document.getElementById('terminal-container'));
 
-<script src="Tamagatchi.js"></script>
+    // Input buffer for WebAssembly
+    let inputBuffer = [];
+    let inputCallback = null;
+
+    // Handle terminal input
+    term.onData(data => {
+      for (const char of data) {
+        inputBuffer.push(char.charCodeAt(0));
+      }
+      term.write(data);
+      
+      // If it's an enter key, add newline
+      if (data === '\r') {
+        term.write('\n');
+        inputBuffer.push('\n'.charCodeAt(0));
+      }
+      
+      // If there's a pending input callback, resolve it
+      if (inputCallback) {
+        const cb = inputCallback;
+        inputCallback = null;
+        cb();
+      }
+    });
+
+    // Configure Module for Emscripten
+    const Module = {
+      print: function(text) {
+        term.writeln(text);
+      },
+      printErr: function(text) {
+        term.writeln('\x1b[31m' + text + '\x1b[0m');  // Red color for errors
+      },
+      stdin: function() {
+        if (inputBuffer.length > 0) {
+          return inputBuffer.shift();
+        }
+        return null;
+      },
+      // This ensures we wait for input when needed
+      stdin_ready: function() {
+        return inputBuffer.length > 0;
+      }
+    };
+
+    // Welcome message
+    term.writeln('Welcome to Tamagatchi Terminal!');
+    term.writeln('Loading WebAssembly module...');
+    term.writeln('Type your commands after the program loads...\n');
+  </script>
+
+  <script src="Tamagatchi.js"></script>
 </body>
 </html>
