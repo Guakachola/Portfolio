@@ -23,16 +23,9 @@
 
     <h3 class="jstitle"> ___ WIP ___ </h3>
 
-    <div id="xterm-container">
-        <script src="xterm/xterm.js"></script>
-        <script>
+    <div id="xterm-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.js "></script>
+    <script src="tamagotchi.js"></script>
 
-            const term = new Terminal();
-
-            term.open(document.getElementById("xterm-container"));
-            term.writeln("Hello world!");
-            term.focus();
-        </script>
-    </div>
 </body>
 </html>

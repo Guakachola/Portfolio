@@ -65,3 +65,10 @@ hr{
     color: white;
 }
 
+#xterm-container {
+    width: 80vw;
+    height: 400px;
+    margin: 2rem auto;
+    border: 2px solid #888;
+  }
+  
