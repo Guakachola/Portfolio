@@ -2,17 +2,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize Swiper
     const swiper = new Swiper('.swiper-container', {
         // Enable smooth sliding effect
-        effect: 'coverflow',
+        effect: 'cube',
         grabCursor: true,
         centeredSlides: true,
-        slidesPerView: 'auto',
+        slidesPerView: 1,
         initialSlide: 0,
-        coverflowEffect: {
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: false,
+        loop: true,
+        cubeEffect: {
+            shadow: true,
+            slideShadows: true,
+            shadowOffset: 20,
+            shadowScale: 0.94,
         },
         // Add pagination
         pagination: {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             prevEl: '.swiper-button-prev',
         },
         // Enable smooth transitions
-        speed: 400,
+        speed: 600,
         // Add keyboard control
         keyboard: {
             enabled: true,
