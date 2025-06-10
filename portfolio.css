@@ -6,7 +6,8 @@ html {
 }
 
 body {
-  background-image: linear-gradient(to bottom right, rgb(31, 28, 48),rgba(2, 132, 238, 0.774));
+  /* background-image: linear-gradient(to bottom right, rgb(31, 28, 48),rgba(2, 132, 238, 0.774)); */
+  background-image: url('assets/features-bg.jpg');
   margin: 0;
   padding: 0;
   min-height: 100vh;
