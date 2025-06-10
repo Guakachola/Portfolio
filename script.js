@@ -33,14 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
     });
 
-    // Flip arch functionality
-    const flipArch = document.querySelector('.flip-arch');
-    if (flipArch) {
-        flipArch.addEventListener('click', function() {
-            const inner = this.querySelector('.flip-arch-inner');
-            inner.classList.toggle('flipped');
-        });
-    }
+   
 
     const title = document.querySelector('.title');
     if (title) {

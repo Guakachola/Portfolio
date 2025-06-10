@@ -102,6 +102,41 @@ div, a{
   gap: 30px;
   position: relative;
   z-index: 5;
+  /* flex-wrap: wrap; */
+}
+
+/* Add specific styling for the skills container */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* images */
+.vim, .python, .html, .css, .javascript, .cplus {
+  width: 100px;
+  /* height: 100px; */
+  object-fit: cover;
+  margin: 10px;
+  transition: transform 0.3s ease;
+}
+
+.vim:hover, .python:hover, .html:hover, .css:hover, .javascript:hover, .cplus:hover {
+  transform: scale(1.1);
+}
+
+.arch {
+  width: 300px;
+  object-fit: cover;
+  margin: 10px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.arch:hover {
+  transform: scale(1.1);
 }
 
 .profile-section {
@@ -123,7 +158,7 @@ div, a{
 }
 
 .uh {
-  width: 400px;
+  width: 300px;
   height: auto;
   margin-right: 20px;
 }
@@ -131,7 +166,7 @@ div, a{
 .card {
   background: rgba(31, 28, 48, 0.6);
   backdrop-filter: blur(10px);
-  width: 900px;
+  width: 700px;
   max-height: 80vh;
   height: auto;
   border: 5px solid #fff;
@@ -155,9 +190,17 @@ div, a{
 }
 
 /* flip arch image */
+.bounce-container {
+  position: relative;
+  width: fit-content;
+  height: 400px;
+  overflow: hidden;
+}
+
+
 .flip-arch {
   background-color: transparent;
-  width: 400px;
+  width: 150px;
   height: auto;
   aspect-ratio: 16/9;
   margin: 0 auto;
@@ -166,7 +209,9 @@ div, a{
   z-index: 10;
   pointer-events: auto;
 }
-
+.flip-arch:hover {
+  animation: rotate-cube 4s infinitelinear;
+}
 .flip-arch-inner {
   position: absolute;
   width: 100%;
@@ -430,5 +475,4 @@ div, a{
 .swiper-pagination {
   bottom: 20px !important;
 }
-
 
