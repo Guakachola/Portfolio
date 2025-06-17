@@ -1,0 +1,93 @@
+body{
+    background-color: #383636;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#grid{
+    display: grid;
+    grid-template-columns: repeat(6, 50px);
+    grid-template-rows: repeat(6, 50px);
+    gap: 4px;
+    /* margin-top: 20px; */
+}
+
+.cell{
+    width: 50px;
+    height: 50px;
+    background-color: #444;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.active{
+    background-color: #ef6d6d;
+}
+
+.inactive{
+    background-color: #b0adad;
+}
+
+#status {
+    margin-top: 20px;
+}
+
+.selected {
+    outline: 2px solid yellow;
+    background-color: gold !important;
+}
+
+.target-info {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: monospace;
+    text-align: center;
+}
+
+#row-target, #col-target {
+    margin: 4px 0;
+    font-size: 1.1em;
+}
+
+#row-target,
+#col-target {
+    margin: 4px 0;
+    font-size: 1.1em;
+}
+
+/* Binary Bit Labels */
+.bit-label {
+    width: 50px;
+    height: 50px;
+    background-color: #2f2f2f;
+    color: white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+/* Row and Column Bit Layout */
+#row-bits {
+    display: grid;
+    grid-template-rows: repeat(6, 50px);
+    gap: 4px;
+    margin-right: 9px;
+    /* margin-top: 20px; */
+}
+
+#col-bits {
+    display: grid;
+    grid-template-columns: repeat(6, 50px);
+    gap: 4px;
+    margin-bottom: 5px;
+}
