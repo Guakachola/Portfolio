@@ -35,13 +35,18 @@ body{
     background-color: #b0adad;
 }
 
-#status {
-    margin-top: 20px;
+#scoreboard, #status {
+    margin: 20px;
 }
 
 .selected {
+    transition: background-color 0.3s;
     outline: 2px solid yellow;
     background-color: gold !important;
+}
+.deselected {
+    transition: background-color 0.3s;
+    background-color: #b0adad;
 }
 
 .target-info {
@@ -90,4 +95,33 @@ body{
     grid-template-columns: repeat(6, 50px);
     gap: 4px;
     margin-bottom: 5px;
+}
+
+#title-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#title-screen h1{
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.game-button{
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    background-color: #8fb6b1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.game-button:hover{
+    background-color: #778987;
 }

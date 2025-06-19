@@ -1,7 +1,7 @@
 const gridSize = 6;
 const gridEl = document.getElementById('grid');
 const statusEl = document.getElementById('status');
-
+const scoreEl = document.getElementById('scoreboard');
 let selectedRow = 0;
 let selectedCol = 0;
 let targetRow = 0;
@@ -42,7 +42,9 @@ document.getElementById('col-target').textContent =
     `Col Target: ${targetCol}`;
 
 }
+function initTitleScreen() {
 
+}
 function initGrid() {
     gridEl.innerHTML = '';
     for (let r = 0; r < gridSize; r++) {
@@ -52,7 +54,7 @@ function initGrid() {
             cell.dataset.row = r;
             cell.dataset.col = c;
 
-            cell.classList.add('inactive');
+            cell.classList.add('deselected');
 
             gridEl.appendChild(cell);
         }
@@ -100,26 +102,34 @@ function handleMovement(e) {
 function updateSelectionHighlight() {
     document.querySelectorAll('.cell').forEach(cell => {
         cell.classList.remove('selected');
+        // Remove inline styling and enforce class-based styling
+        if (!cell.classList.contains('active')) {
+            cell.classList.add('deselected');
+        }
     });
 
     const selector = `.cell[data-row="${selectedRow}"][data-col="${selectedCol}"]`;
     const selected = document.querySelector(selector);
     if (selected) {
+        selected.classList.remove('deselected');
         selected.classList.add('selected');
     }
 }
 
 function checkSelection() {
     if (gridData[selectedRow][selectedCol]) {
-        score++;
+        score += 10;
+        scoreEl.textContent = `Score: ${score}`;
         statusEl.textContent = "Correct! +10 points";
+
 
         // Reveal all active (red) cells
         document.querySelectorAll('.cell').forEach(cell => {
             const r = parseInt(cell.dataset.row);
             const c = parseInt(cell.dataset.col);
             if (gridData[r][c]) {
-                cell.classList.remove('inactive');
+                console.log("reavealing active cell.")
+                cell.classList.remove('deselected');
                 cell.classList.add('active');
             }
         });
@@ -167,5 +177,12 @@ function updateBitLabels() {
     }
   }
   
+
+document.getElementById('start-button').addEventListener('click', () => {
+    document.getElementById('title-screen').style.display = 'none';
+    document.getElementById('game-ui').style.display = 'flex';
+    resetGame();
+})
 document.addEventListener("keydown", handleMovement);
 window.onload = resetGame;
+
